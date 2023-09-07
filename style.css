@@ -27,20 +27,14 @@ header h1 {
     margin-bottom: 10px; /* Ajout d'une marge en bas pour séparer l'en-tête de la bannière */
 }
 
-.header-image {
-    width: 100%;
-    height: auto;
-}
-
 /* Section "La magie des Monster Plants" */
 .monster-plant-section {
     background-image: url("https://images.habbo.com/web_images/habbo-web-articles/Monster-Plant.png");
     background-size: cover;
     background-position: center;
-    height: 300px;
+    padding: 20px;
     text-align: center;
     color: white;
-    padding: 20px;
 }
 
 /* Section principale */
