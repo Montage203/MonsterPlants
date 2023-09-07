@@ -1,41 +1,73 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monster Plants</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <h1>Monster Plants</h1>
-    </header>
-    <main>
-        <section id="shop">
-            <h2>Boutique</h2>
-            <div class="plant-seeds">
-                <h3>Graines de Monster Plantes</h3>
-                <button id="buy-seed">Acheter une graine</button>
-            </div>
-        </section>
-        <section id="apartment">
-            <h2>Votre Appart'</h2>
-            <div class="plants">
-                <h3>Mes Monster Plantes</h3>
-                <div id="plant-container">
-                    <!-- Les plantes apparaîtront ici -->
-                </div>
-            </div>
-        </section>
-        <section id="credits">
-            <h2>Crédits</h2>
-            <p>Achetez 20 crédits Habbo pour obtenir 4 graines et 1 potion magique (mnst_fert) pour l'évolution.</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023 Monster Plants</p>
-    </footer>
-    <script src="script.js"></script>
-</body>
-</html>
+
+// Variables pour suivre l'état du jeu
+let seeds = 0;
+let plants = [];
+let credits = 0;
+
+// Fonction pour acheter une graine de niveau 1
+document.getElementById("buy-seed").addEventListener("click", function () {
+    seeds++;
+    updateGameUI();
+});
+
+// Fonction pour planter une graine
+document.getElementById("plant-container").addEventListener("click", function (event) {
+    const target = event.target;
+    if (target.classList.contains("plant")) {
+        const plantIndex = target.getAttribute("data-index");
+        if (seeds > 0 && !plants[plantIndex].planted) {
+            seeds--;
+            plants[plantIndex].planted = true;
+            updateGameUI();
+            setTimeout(growPlant, 30 * 60 * 60 * 1000, plantIndex); // 30 heures en millisecondes
+        }
+    }
+});
+
+// Fonction pour faire pousser une plante
+function growPlant(plantIndex) {
+    plants[plantIndex].planted = false;
+    credits += plants[plantIndex].creditReward;
+    updateGameUI();
+}
+
+// Fonction pour évoluer une plante avec la potion magique
+document.getElementById("credits").addEventListener("click", function () {
+    if (credits >= 20) {
+        credits -= 20;
+        seeds += 4;
+        updateGameUI();
+    }
+});
+
+// Fonction pour mettre à jour l'interface du jeu
+function updateGameUI() {
+    document.getElementById("seeds-count").textContent = seeds;
+    document.getElementById("credits-count").textContent = credits;
+
+    const plantContainer = document.getElementById("plant-container");
+    plantContainer.innerHTML = "";
+
+    for (let i = 0; i < plants.length; i++) {
+        const plant = plants[i];
+        const plantElement = document.createElement("div");
+        plantElement.classList.add("plant");
+        if (plant.planted) {
+            plantElement.classList.add("planted");
+        }
+        plantElement.setAttribute("data-index", i);
+        plantContainer.appendChild(plantElement);
+    }
+}
+
+// Initialisation du jeu
+function initializeGame() {
+    for (let i = 0; i < 5; i++) {
+        plants.push({ planted: false, creditReward: 0 });
+    }
+    updateGameUI();
+}
+
+// Appel de la fonction d'initialisation du jeu au chargement de la page
+window.onload = initializeGame;
 
