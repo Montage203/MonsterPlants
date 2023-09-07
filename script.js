@@ -1,52 +1,72 @@
-
 // script.js
-let diamondCount = 20;
-let seedLevel = 1;
-let growthTime = 0;
 
+// Variables pour suivre l'état du jeu
+let seeds = 0;
+let plants = [];
+let credits = 0;
+
+// Fonction pour acheter une graine
 document.getElementById("buy-seed").addEventListener("click", function () {
-    if (diamondCount >= 5) {
-        diamondCount -= 5;
-        seedLevel = 1;
-        growthTime = 0;
-        updateGameUI();
-    }
-});
-
-document.getElementById("plant-seed").addEventListener("click", function () {
-    if (growthTime === 0) {
-        growthTime = seedLevel * 5; // Temps de croissance en secondes
-        updateGameUI();
-        setTimeout(growPlant, growthTime * 1000);
-    }
-});
-
-document.getElementById("reproduce-seed").addEventListener("click", function () {
-    if (seedLevel < 7) {
-        seedLevel++;
-        growthTime = 0;
-        updateGameUI();
-    }
-});
-
-function growPlant() {
-    if (seedLevel < 7) {
-        seedLevel++;
-        updateGameUI();
-    }
-}
-
-function updateGameUI() {
-    document.getElementById("diamond-count").textContent = diamondCount;
-    document.getElementById("seed-level").textContent = seedLevel;
-    document.getElementById("growth-time").textContent = growthTime;
-    document.getElementById("plant-seed").disabled = growthTime > 0;
-    document.getElementById("reproduce-seed").disabled = seedLevel === 7;
-}
-
-window.onload = function () {
-    diamondCount = 20;
-    seedLevel = 1;
-    growthTime = 0;
+    seeds++;
     updateGameUI();
-};
+});
+
+// Fonction pour planter une graine
+document.getElementById("plant-container").addEventListener("click", function (event) {
+    const target = event.target;
+    if (target.classList.contains("plant")) {
+        const plantIndex = target.getAttribute("data-index");
+        if (seeds > 0 && !plants[plantIndex].planted) {
+            plants[plantIndex].planted = true;
+            seeds--;
+            updateGameUI();
+            setTimeout(treatPlant, 30 * 60 * 60 * 1000, plantIndex); // 30 heures en millisecondes
+        }
+    }
+});
+
+// Fonction pour traiter une plante
+function treatPlant(plantIndex) {
+    plants[plantIndex].planted = false;
+    updateGameUI();
+}
+
+// Fonction pour évoluer une plante avec la potion magique
+document.getElementById("credits").addEventListener("click", function () {
+    if (credits >= 20) {
+        credits -= 20;
+        seeds += 4;
+        updateGameUI();
+    }
+});
+
+// Fonction pour mettre à jour l'interface du jeu
+function updateGameUI() {
+    document.getElementById("seeds-count").textContent = seeds;
+    document.getElementById("credits-count").textContent = credits;
+
+    const plantContainer = document.getElementById("plant-container");
+    plantContainer.innerHTML = "";
+
+    for (let i = 0; i < plants.length; i++) {
+        const plant = plants[i];
+        const plantElement = document.createElement("div");
+        plantElement.classList.add("plant");
+        if (plant.planted) {
+            plantElement.classList.add("planted");
+        }
+        plantElement.setAttribute("data-index", i);
+        plantContainer.appendChild(plantElement);
+    }
+}
+
+// Initialisation du jeu
+function initializeGame() {
+    for (let i = 0; i < 5; i++) {
+        plants.push({ planted: false });
+    }
+    updateGameUI();
+}
+
+// Appel de la fonction d'initialisation du jeu au chargement de la page
+window.onload = initializeGame;
