@@ -1,11 +1,9 @@
-// script.js
-
 // Variables pour suivre l'état du jeu
 let seeds = 0;
 let plants = [];
 let credits = 0;
 
-// Fonction pour acheter une graine
+// Fonction pour acheter une graine de niveau 1
 document.getElementById("buy-seed").addEventListener("click", function () {
     seeds++;
     updateGameUI();
@@ -17,17 +15,18 @@ document.getElementById("plant-container").addEventListener("click", function (e
     if (target.classList.contains("plant")) {
         const plantIndex = target.getAttribute("data-index");
         if (seeds > 0 && !plants[plantIndex].planted) {
-            plants[plantIndex].planted = true;
             seeds--;
+            plants[plantIndex].planted = true;
             updateGameUI();
-            setTimeout(treatPlant, 30 * 60 * 60 * 1000, plantIndex); // 30 heures en millisecondes
+            setTimeout(growPlant, 30 * 60 * 60 * 1000, plantIndex); // 30 heures en millisecondes
         }
     }
 });
 
-// Fonction pour traiter une plante
-function treatPlant(plantIndex) {
+// Fonction pour faire pousser une plante
+function growPlant(plantIndex) {
     plants[plantIndex].planted = false;
+    credits += plants[plantIndex].creditReward;
     updateGameUI();
 }
 
@@ -63,7 +62,7 @@ function updateGameUI() {
 // Initialisation du jeu
 function initializeGame() {
     for (let i = 0; i < 5; i++) {
-        plants.push({ planted: false });
+        plants.push({ planted: false, creditReward: 0 });
     }
     updateGameUI();
 }
