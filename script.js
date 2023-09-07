@@ -26,6 +26,16 @@ function handleRandomEvent() {
         updateGameUI();
         alert(`Événement aléatoire ! Vos plantes ont rapporté ${plants * clickValue * bonus} crédits.`);
     }
+
+    // Autre exemple : Chance d'obtenir des plantes gratuites
+    if (eventChance <= 5) {
+        const freePlants = getRandomNumber(1, 10); // Un nombre aléatoire de plantes gratuites (entre 1 et 10)
+        plants += freePlants;
+        updateGameUI();
+        alert(`Événement aléatoire ! Vous avez trouvé ${freePlants} plantes gratuites.`);
+    }
+
+    // Vous pouvez ajouter plus d'événements aléatoires ici
 }
 
 // Fonction pour ajouter une amélioration
@@ -74,7 +84,6 @@ function updateGameUI() {
 // Mettre à jour l'interface au chargement de la page
 window.onload = function () {
     updateGameUI();
-    // Ajoutez d'autres éléments de jeu (améliorations, événements aléatoires, etc.) ici
 
     // Gestion des événements aléatoires
     setInterval(handleRandomEvent, 30000); // Un événement aléatoire toutes les 30 secondes (30000 millisecondes)
