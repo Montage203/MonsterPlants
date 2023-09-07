@@ -19,7 +19,7 @@ function getRandomNumber(min, max) {
 function handleRandomEvent() {
     const eventChance = getRandomNumber(1, 101); // Un nombre entre 1 et 100 inclus
 
-    // Exemple d'événement aléatoire : Chance de doubler les crédits
+    // Événement aléatoire 1 : Chance de doubler les crédits
     if (eventChance <= 10) {
         const bonus = getRandomNumber(1, 4); // Un multiplicateur de crédits aléatoire (entre 1 et 4)
         credits += plants * clickValue * bonus;
@@ -27,7 +27,7 @@ function handleRandomEvent() {
         alert(`Événement aléatoire ! Vos plantes ont rapporté ${plants * clickValue * bonus} crédits.`);
     }
 
-    // Autre exemple : Chance d'obtenir des plantes gratuites
+    // Événement aléatoire 2 : Chance d'obtenir des plantes gratuites
     if (eventChance <= 5) {
         const freePlants = getRandomNumber(1, 10); // Un nombre aléatoire de plantes gratuites (entre 1 et 10)
         plants += freePlants;
@@ -35,7 +35,13 @@ function handleRandomEvent() {
         alert(`Événement aléatoire ! Vous avez trouvé ${freePlants} plantes gratuites.`);
     }
 
-    // Vous pouvez ajouter plus d'événements aléatoires ici
+    // Événement aléatoire 3 : Chance d'augmenter le clickValue
+    if (eventChance <= 2) {
+        const bonus = getRandomNumber(1, 5); // Un multiplicateur de clickValue aléatoire (entre 1 et 5)
+        clickValue += bonus;
+        updateGameUI();
+        alert(`Événement aléatoire ! Votre clickValue a été augmenté de ${bonus}.`);
+    }
 }
 
 // Fonction pour ajouter une amélioration
@@ -91,4 +97,6 @@ window.onload = function () {
     addUpgrade("Amélioration 7", 10000, 1000);
     addUpgrade("Granny", 50000, 5000);
     addUpgrade("Amélioration 8", 100000, 10000);
+    addUpgrade("Amélioration 9", 200000, 20000);
+    addUpgrade("Amélioration 10", 500000, 50000);
 };
