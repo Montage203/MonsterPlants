@@ -3,39 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monster Plants Clicker</title>
+    <title>Monster Plants Idle</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Monster Plants Clicker</h1>
+        <h1>Monster Plants Idle</h1>
     </header>
     <main>
-        <section id="shop">
-            <h2>Boutique</h2>
-            <div class="plant-seeds">
-                <h3>Graines de Monster Plantes (Niveau 1)</h3>
-                <button id="buy-seed">Acheter une graine</button>
-            </div>
-        </section>
-        <section id="apartment">
-            <h2>Votre Appart'</h2>
-            <div class="plants">
-                <h3>Mes Monster Plantes</h3>
-                <div id="plant-container">
-                    <!-- Les plantes apparaîtront ici -->
-                </div>
-            </div>
-        </section>
-        <section id="credits">
-            <h2>Crédits</h2>
-            <p>Utilisez 20 crédits pour acheter 4 graines et évoluer une plante de niveau 7.</p>
-            <button id="use-credits">Utiliser 20 crédits</button>
-            <p>Crédits disponibles : <span id="credits-count">0</span></p>
+        <section id="game-container">
+            <h2>Niveau <span id="level">1</span></h2>
+            <p>Crédits: <span id="credits">0</span></p>
+            <button id="plant-button">Planter</button>
+            <button id="upgrade-button">Amélioration</button>
         </section>
     </main>
     <footer>
-        <p>&copy; 2023 Monster Plants Clicker</p>
+        <p>&copy; 2023 Monster Plants Idle</p>
     </footer>
     <script src="script.js"></script>
 </body>
