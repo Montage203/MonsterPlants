@@ -10,19 +10,21 @@
 /* Styles globaux */
 body {
     font-family: Arial, sans-serif;
+    background-color: #f2f2f2; /* Ajout d'une couleur de fond */
+    text-align: center; /* Centre tout le contenu */
 }
 
 /* En-tête */
 header {
     background-color: #1a1a1a;
     color: white;
-    text-align: center;
     padding: 20px 0;
     position: relative;
 }
 
 header h1 {
     font-size: 36px;
+    margin-bottom: 10px; /* Ajout d'une marge en bas pour séparer l'en-tête de la bannière */
 }
 
 .header-image {
@@ -96,11 +98,3 @@ footer {
     bottom: 0;
     width: 100%;
 }
-
-/* Styles pour les événements aléatoires (si nécessaire) */
-/* .random-event {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    margin: 10px 0;
-} */
