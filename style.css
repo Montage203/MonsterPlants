@@ -1,22 +1,17 @@
 /* style.css */
 
-/* Réinitialisation de styles par défaut */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: Arial, sans-serif;
+    text-align: center;
     background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
 }
 
 header {
     background-color: #1c70b6;
     color: white;
     padding: 20px;
-    text-align: center;
 }
 
 h1 {
@@ -33,7 +28,7 @@ main {
     padding: 20px;
     margin: 0 auto;
     width: 90%;
-    max-width: 400px; /* Ajustez selon vos préférences */
+    max-width: 400px;
     text-align: center;
 }
 
@@ -47,7 +42,7 @@ button {
     font-size: 16px;
     border-radius: 5px;
     width: 100%;
-    max-width: 200px; /* Ajustez selon vos préférences */
+    max-width: 200px;
 }
 
 button:hover {
@@ -60,7 +55,7 @@ button:hover {
     padding: 20px;
     margin: 20px auto;
     width: 90%;
-    max-width: 400px; /* Ajustez selon vos préférences */
+    max-width: 400px;
     text-align: center;
 }
 
@@ -81,7 +76,6 @@ footer {
 }
 
 @media (max-width: 500px) {
-    /* Styles pour les petits écrans (Mobile First) */
     body {
         font-size: 16px;
     }
