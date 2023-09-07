@@ -42,10 +42,10 @@ function handleRandomEvent() {
 function addUpgrade(name, cost, increase) {
     const upgradeItem = document.createElement("div");
     upgradeItem.innerHTML = `<button>${name} (${cost} crédits)</button>`;
-    upgradeList.appendChild(upgradeItem);
-
-    upgradeItem.querySelector("button").addEventListener("click", function () {
-        if (credits >= cost) {
+    
+    // Vérifier si vous avez suffisamment de crédits pour acheter l'amélioration
+    if (credits >= cost) {
+        upgradeItem.querySelector("button").addEventListener("click", function () {
             credits -= cost;
             if (name === "Auto-Clicker") {
                 autoClickers++;
@@ -55,8 +55,13 @@ function addUpgrade(name, cost, increase) {
                 clickValue += increase;
             }
             updateGameUI();
-        }
-    });
+        });
+    } else {
+        // Si vous n'avez pas suffisamment de crédits, désactivez le bouton
+        upgradeItem.querySelector("button").disabled = true;
+    }
+    
+    upgradeList.appendChild(upgradeItem);
 }
 
 function updateGameUI() {
@@ -87,18 +92,3 @@ window.onload = function () {
     addUpgrade("Granny", 50000, 5000);
     addUpgrade("Amélioration 8", 100000, 10000);
 };
-
-// Fonction pour gérer la production automatique
-function autoClick() {
-    credits += autoClickers * clickValue;
-    updateGameUI();
-}
-
-// Appel de la fonction d'auto-clic toutes les secondes
-setInterval(autoClick, 1000); // Toutes les 1000 millisecondes (1 seconde)
-
-// Gestion du clic sur le bouton "Planter une plante"
-plantButton.addEventListener("click", function () {
-    plants += clickValue;
-    updateGameUI();
-});
