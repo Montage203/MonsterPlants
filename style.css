@@ -1,25 +1,30 @@
 /* style.css */
 
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f0f0f0;
+/* Réinitialisation de styles par défaut */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
 }
 
 header {
     background-color: #1c70b6;
     color: white;
     padding: 20px;
-}
-
-main {
-    padding: 20px;
+    text-align: center;
 }
 
 h1 {
     margin: 0;
+}
+
+main {
+    padding: 20px;
 }
 
 #game-container {
@@ -27,7 +32,9 @@ h1 {
     border: 1px solid #ddd;
     padding: 20px;
     margin: 0 auto;
-    width: 300px;
+    width: 90%;
+    max-width: 400px; /* Ajustez selon vos préférences */
+    text-align: center;
 }
 
 button {
@@ -37,8 +44,54 @@ button {
     border: none;
     cursor: pointer;
     margin: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 200px; /* Ajustez selon vos préférences */
 }
 
 button:hover {
     background-color: #155185;
+}
+
+#upgrades {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 400px; /* Ajustez selon vos préférences */
+    text-align: center;
+}
+
+#upgrade-list {
+    text-align: left;
+}
+
+#upgrade-list div {
+    margin: 10px 0;
+}
+
+footer {
+    background-color: #1c70b6;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 12px;
+}
+
+@media (max-width: 500px) {
+    /* Styles pour les petits écrans (Mobile First) */
+    body {
+        font-size: 16px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+
+    #game-container, #upgrades {
+        width: 100%;
+        max-width: none;
+    }
 }
