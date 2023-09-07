@@ -10,8 +10,8 @@
 /* Styles globaux */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2; /* Ajout d'une couleur de fond */
-    text-align: center; /* Centre tout le contenu */
+    background-color: #f2f2f2;
+    text-align: center;
 }
 
 /* En-tête */
@@ -19,12 +19,11 @@ header {
     background-color: #1a1a1a;
     color: white;
     padding: 20px 0;
-    position: relative;
 }
 
 header h1 {
     font-size: 36px;
-    margin-bottom: 10px; /* Ajout d'une marge en bas pour séparer l'en-tête de la bannière */
+    margin-bottom: 10px;
 }
 
 /* Section "La magie des Monster Plants" */
