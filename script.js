@@ -40,12 +40,12 @@ function handleRandomEvent() {
 
 // Fonction pour ajouter une amélioration
 function addUpgrade(name, cost, increase) {
-    const upgradeItem = document.createElement("div");
-    upgradeItem.innerHTML = `<button>${name} (${cost} crédits)</button>`;
-    upgradeList.appendChild(upgradeItem);
+    if (credits >= cost) {
+        const upgradeItem = document.createElement("div");
+        upgradeItem.innerHTML = `<button>${name} (${cost} crédits)</button>`;
+        upgradeList.appendChild(upgradeItem);
 
-    upgradeItem.querySelector("button").addEventListener("click", function () {
-        if (credits >= cost) {
+        upgradeItem.querySelector("button").addEventListener("click", function () {
             credits -= cost;
             if (name === "Auto-Clicker") {
                 autoClickers++;
@@ -55,16 +55,18 @@ function addUpgrade(name, cost, increase) {
                 clickValue += increase;
             }
             updateGameUI();
-        }
-    });
+        });
+    }
 }
 
 function updateGameUI() {
     plantContainer.textContent = `Plantes: ${plants}`;
     plantButton.textContent = `Planter une plante (+${clickValue})`;
 
+    // Efface toutes les améliorations affichées
     upgradeList.innerHTML = "";
 
+    // Ajoute des améliorations si vous avez suffisamment de crédits
     addUpgrade("Amélioration 1", 10, 1);
     addUpgrade("Amélioration 2", 50, 5);
     addUpgrade("Amélioration 3", 100, 10);
