@@ -40,12 +40,12 @@ function handleRandomEvent() {
 
 // Fonction pour ajouter une amélioration
 function addUpgrade(name, cost, increase) {
-    if (credits >= cost) {
-        const upgradeItem = document.createElement("div");
-        upgradeItem.innerHTML = `<button>${name} (${cost} crédits)</button>`;
-        upgradeList.appendChild(upgradeItem);
+    const upgradeItem = document.createElement("div");
+    upgradeItem.innerHTML = `<button>${name} (${cost} crédits)</button>`;
+    upgradeList.appendChild(upgradeItem);
 
-        upgradeItem.querySelector("button").addEventListener("click", function () {
+    upgradeItem.querySelector("button").addEventListener("click", function () {
+        if (credits >= cost) {
             credits -= cost;
             if (name === "Auto-Clicker") {
                 autoClickers++;
@@ -54,10 +54,9 @@ function addUpgrade(name, cost, increase) {
             } else {
                 clickValue += increase;
             }
-            upgradeList.removeChild(upgradeItem); // Retirez l'amélioration achetée
             updateGameUI();
-        });
-    }
+        }
+    });
 }
 
 function updateGameUI() {
@@ -75,6 +74,18 @@ window.onload = function () {
 
     // Gestion des événements aléatoires
     setInterval(handleRandomEvent, 30000); // Un événement aléatoire toutes les 30 secondes (30000 millisecondes)
+
+    // Ajout des améliorations initiales
+    addUpgrade("Amélioration 1", 10, 1);
+    addUpgrade("Amélioration 2", 50, 5);
+    addUpgrade("Amélioration 3", 100, 10);
+    addUpgrade("Amélioration 4", 500, 50);
+    addUpgrade("Auto-Clicker", 200, 1);
+    addUpgrade("Amélioration 5", 1000, 100);
+    addUpgrade("Amélioration 6", 5000, 500);
+    addUpgrade("Amélioration 7", 10000, 1000);
+    addUpgrade("Granny", 50000, 5000);
+    addUpgrade("Amélioration 8", 100000, 10000);
 };
 
 // Fonction pour gérer la production automatique
