@@ -10,13 +10,14 @@
 /* Styles globaux */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background-color: #f8f8f8;
     text-align: center;
+    line-height: 1.6;
 }
 
 /* En-tête */
 header {
-    background-color: #1a1a1a;
+    background-color: #4CAF50;
     color: white;
     padding: 20px 0;
 }
@@ -24,6 +25,10 @@ header {
 header h1 {
     font-size: 36px;
     margin-bottom: 10px;
+}
+
+header p {
+    font-size: 18px;
 }
 
 /* Section "La magie des Monster Plants" */
@@ -77,13 +82,18 @@ main {
     cursor: pointer;
 }
 
+#upgrade-list button[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
 #upgrade-list button:hover {
     background-color: #45a049;
 }
 
 /* Pied de page */
 footer {
-    background-color: #1a1a1a;
+    background-color: #4CAF50;
     color: white;
     text-align: center;
     padding: 10px 0;
