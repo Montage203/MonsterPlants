@@ -1,20 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Idle Clicker Game</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monster Plants</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="game-container">
-        <h1>Idle Clicker Game</h1>
-        <p>Diamants: <span id="diamond-count">20</span></p>
-        <button id="buy-seed">Acheter une graine</button>
-        <button id="plant-seed" disabled>Planter la graine</button>
-        <button id="reproduce-seed" disabled>Reproduire la graine</button>
-        <p>Niveau de la graine: <span id="seed-level">1</span></p>
-        <p>Temps de croissance: <span id="growth-time">0</span> secondes</p>
-    </div>
-
+    <header>
+        <h1>Monster Plants</h1>
+    </header>
+    <main>
+        <section id="shop">
+            <h2>Boutique</h2>
+            <div class="plant-seeds">
+                <h3>Graines de Monster Plantes</h3>
+                <button id="buy-seed">Acheter une graine</button>
+            </div>
+        </section>
+        <section id="apartment">
+            <h2>Votre Appart'</h2>
+            <div class="plants">
+                <h3>Mes Monster Plantes</h3>
+                <div id="plant-container">
+                    <!-- Les plantes apparaîtront ici -->
+                </div>
+            </div>
+        </section>
+        <section id="credits">
+            <h2>Crédits</h2>
+            <p>Achetez 20 crédits Habbo pour obtenir 4 graines et 1 potion magique (mnst_fert) pour l'évolution.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Monster Plants</p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
