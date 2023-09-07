@@ -5,10 +5,12 @@ let credits = 0;
 let clickValue = 1;
 let autoClickers = 0;
 let grandmas = 0;
+let level = 1;
 
 const plantContainer = document.getElementById("plant-container");
 const plantButton = document.getElementById("plant-button");
 const upgradeList = document.getElementById("upgrade-list");
+const levelDisplay = document.getElementById("level");
 
 // Fonction pour générer un nombre aléatoire entre min (inclus) et max (exclus)
 function getRandomNumber(min, max) {
@@ -73,6 +75,7 @@ function addUpgrade(name, cost, increase) {
 function updateGameUI() {
     plantContainer.textContent = `Plantes: ${plants}`;
     plantButton.textContent = `Planter une plante (+${clickValue})`;
+    levelDisplay.textContent = `Niveau: ${level}`;
 
     document.getElementById("credits").textContent = `Crédits: ${credits}`;
     document.getElementById("auto-clickers").textContent = `Auto-Clickers: ${autoClickers}`;
@@ -93,10 +96,4 @@ window.onload = function () {
     addUpgrade("Amélioration 4", 500, 50);
     addUpgrade("Auto-Clicker", 200, 1);
     addUpgrade("Amélioration 5", 1000, 100);
-    addUpgrade("Amélioration 6", 5000, 500);
-    addUpgrade("Amélioration 7", 10000, 1000);
-    addUpgrade("Granny", 50000, 5000);
-    addUpgrade("Amélioration 8", 100000, 10000);
-    addUpgrade("Amélioration 9", 200000, 20000);
-    addUpgrade("Amélioration 10", 500000, 50000);
 };
