@@ -98,3 +98,8 @@ function autoClick() {
 // Appel de la fonction d'auto-clic toutes les secondes
 setInterval(autoClick, 1000); // Toutes les 1000 millisecondes (1 seconde)
 
+// Gestion du clic sur le bouton "Planter une plante"
+plantButton.addEventListener("click", function () {
+    plants += clickValue;
+    updateGameUI();
+});
